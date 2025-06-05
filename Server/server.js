@@ -5,7 +5,12 @@ import cors from 'cors'
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+
+app.use(cors({
+  origin: 'https://smtp-form-submission.vercel.app',
+  methods: ['POST'],
+  allowedHeaders: ['Content-Type']
+}));
 
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
