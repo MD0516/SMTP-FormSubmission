@@ -17,6 +17,11 @@ app.post('/api/contact', async (req, res) => {
   try {
     await sendMailToUser(name, email);
     await sendMailToCompany(name, email, message);
+    await fetch ('https://script.google.com/macros/s/AKfycbzFcqTICyfqrhgkhTsPYU0Zwp7d-wrkEt9THzfV9fLFRwSyYPmXgfmm-4glWRm4K2bw/exec', {
+      method: 'POST',
+      headers: {'Content-Type':'application/JSON'},
+      body: JSON.stringify({name, email, message})
+    })
     res.status(200).send({ success: true });
   } catch (err) {
     console.error("Email error:", err);
