@@ -20,7 +20,7 @@ const App = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('https://smtp-formsubmission.onrender.com',{
+      const res = await fetch('https://smtp-formsubmission.onrender.com/api/contact',{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
